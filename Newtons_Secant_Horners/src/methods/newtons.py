@@ -3,7 +3,10 @@ import numpy as np
 class Newton:
     def __init__(self, x0, f, fd) -> None:
         # Initial value - staring point
-        self.x = x0
+        if isinstance(x0, int):
+            self.x = float(x0)
+        else:
+            self.x = x0
 
         # Function for which we're computing the zero. Ex : tan(x)/(x^2)
         self.f = f
