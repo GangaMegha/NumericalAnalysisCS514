@@ -6,7 +6,7 @@ Newton-Raphson iteration can be used to find the zero of a real valued function 
 
 For funtion $f(x)$, we can find its zero using the following iteration :
 
-$$x_{n+1} = x_n - f(x_n)/f'(x_n)  ; n>=0$$
+$$x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)} \quad  ; n>=0$$
       
 where $f(x_n)$ is the value of the function at $x_n$ and $f'(x_n)$ is the value of the derivative of $f(x)$ at $x_n$.
       
@@ -46,7 +46,7 @@ To overcome this disadvantage, one of the ways is to use secant method.
 
 For funtion f(x), we can find its zero using the following iteration :
       
-$$x_{n+1} = x_n - f(x_n) * (x_n - x_{n-1}) / (f(x_n) - f(x_{n-1})) ; n>=1$$
+$$x_{n+1} = x_n - f(x_n) * \bigg(\frac{x_n - x_{n-1}}{f(x_n) - f(x_{n-1})}\bigg) \quad ; n>=1$$
       
       
 ### 3. Horner's Algorithm
@@ -55,9 +55,9 @@ Horner's algorithm is to used to efficiently compute values of a polynomial.
 The method is also known as 'nested multiplcation' or 'synthetic division'.
 
 The algorithm has several usecases. For example : 
-1. Given a complex number z0 and polynomial p find the values of p(z0) and it's derivatives.
-2. Find the deflation factors, ie., removing linear factor from polynomial like p(z) = (z-z0) * q(z) + r by computing r
-3. Find coefficients of Taylor series expansion of the polynomial p around z0 (complete Horner's algorithm)
+1. Given a complex number $z_0$ and polynomial $p$ find the values of $p(z_0)$ and it's derivatives.
+2. Find the deflation factors, ie., removing linear factor from polynomial like $p(z) = (z-z_0) \cdot q(z) + r$ by computing $r$
+3. Find coefficients of Taylor series expansion of the polynomial $p$ around $z_0$ (complete Horner's algorithm)
 
 
 Here, given $z_0$ and coefficients of polynomial $p(z) = a_n x^n + a_{n-1} x^{n-1} + ... a_1 x + a_0$ we use Horner's algorithm to compute :
