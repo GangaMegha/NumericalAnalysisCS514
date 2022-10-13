@@ -74,7 +74,7 @@ $$\alpha = a_k + z_0 \times \alpha$$
 ## Getting started
 Inorder to run the code for the following questions taken from *"David, K., & Ward, C.(2009). Numerical Analysis : Mathematics of scientific computing, third edition. American Mathematical Society"*, navigate to this directory (**/Newtons_Secant_Horners/**) and use the instructions that follow:
 
-1. Section 3.2 Qn.3 : Find the positive minimum point of the function $f(x)=tanx/(x^2)$ by computing the zeros of $f'$ using Newton's method.
+1. Section 3.2 Qn.3 : Find the positive minimum point of the function $f(x)=\tan(x)/(x^2)$ by computing the zeros of $f'$ using Newton's method.
            
            make Qn3_2__3_Newtons
            
