@@ -4,7 +4,7 @@ from decimal import Decimal
 '''
 H O R N E R ' S    A L G O R I T H M :
 
-    Hormer's algorithm is to used to efficiently compute values of a polynomial. 
+    Horner's algorithm is to used to efficiently compute values of a polynomial. 
     The method is also known as 'nested multiplcation' or 'synthetic division'.
 
     The algorithm has several usecases. For example : 
