@@ -74,14 +74,14 @@ $$\alpha = a_k + z_0 \times \alpha$$
 ## Getting started
 Inorder to run the code for the following questions taken from *"David, K., & Ward, C.(2009). Numerical Analysis : Mathematics of scientific computing, third edition. American Mathematical Society"*, navigate to this directory (**/Newtons_Secant_Horners/**) and use the instructions that follow:
 
-1. Section 3.2 Qn.3 : Find the positive minimum point of the function $f(x)=\tan(x)/(x^2)$ by computing the zeros of $f'$ using Newton's method.
+1. Section 3.2 Qn.3 : Find the positive minimum point of the function $f(x) = x^{-2} \cdot \tan(x)$ by computing the zeros of $f'$ using Newton's method.
            
            make Qn3_2__3_Newtons
            
            make Qn3_2__3_Secant
            
            
-2. Section 3.2 Qn.5 : The equation $2(x^4) + 24(x^3) + 61(x^2) - 16x + 1 = 0$ has $2$ roots near 0.1. Determine them by means of Newton's method. Use Horner’s algorithm to compute value of the funciton and it's derivative
+2. Section 3.2 Qn.5 : The equation $2 \cdot x^4 + 24 \cdot x^3 + 61 \cdot x^2 - 16 \cdot x + 1 = 0$ has $2$ roots near 0.1. Determine them by means of Newton's method. Use Horner’s algorithm to compute value of the funciton and it's derivative
            
            make Qn3_2__5   
            
