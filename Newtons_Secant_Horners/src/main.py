@@ -94,6 +94,7 @@ class Qn3_2__5():
 
     def forward(self) -> list:
         for z0 in np.linspace(self.z0_avg-2*self.w, self.z0_avg+self.w, 50):
+            print(f"\n\n\n\n*************************** Using initial value x0={z0} ***************************")
             obj = Newton(z0, None)
             z = obj.forward(use_horner=True, ak=self.ak)
             if round(z, 5) not in self.zeros:
