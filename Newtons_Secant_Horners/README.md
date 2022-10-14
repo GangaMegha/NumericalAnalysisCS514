@@ -60,15 +60,15 @@ The algorithm has several usecases. For example :
 3. Find coefficients of Taylor series expansion of the polynomial $p$ around $z_0$ (complete Horner's algorithm)
 
 
-Here, given $z_0$ and coefficients of polynomial $p(z) = a_n x^n + a_{n-1} x^{n-1} + ... a_1 x + a_0$ we use Horner's algorithm to compute :
-1. $\alpha = p(z_0)$ 
-2. $\beta  = p'(z_0)$
+Here, given $x_0$ and coefficients of polynomial $p(x) = a_n x^n + a_{n-1} x^{n-1} + ... a_1 x + a_0$ we use Horner's algorithm to compute :
+1. $\alpha = p(x_0)$ 
+2. $\beta  = p'(x_0)$
 
 by starting with $\alpha = a_n$ and $\beta=0$ and using the following iteration from $k=n-1$ to $0$:
       
-$$\beta = \alpha + z_0 \times \beta$$  
+$$\beta = \alpha + x_0 \times \beta$$  
 
-$$\alpha = a_k + z_0 \times \alpha$$
+$$\alpha = a_k + x_0 \times \alpha$$
 
 
 ## Getting started
