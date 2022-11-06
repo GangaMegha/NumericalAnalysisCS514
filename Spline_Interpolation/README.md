@@ -13,6 +13,8 @@ functions Sx and Sy. This will produce a parametric representation of the origin
 Compute a large number of values of Sx(t) and Sy(t) to give to the plotter. To learn more
 about how spline curves are used in designing typefaces, the reader should consult Knuth
 [1979].
+
+
 ![Fig6_7](/Images/Fig6_7.png)
            
            make Qn3_2__3_Newtons
