@@ -15,7 +15,7 @@ about how spline curves are used in designing typefaces, the reader should consu
 [1979].
 
 
-![Fig](Fig6_7.png)
+![Fig 6.7](/images/Fig6_7.png)
 
            
            make Qn3_2__3_Newtons
