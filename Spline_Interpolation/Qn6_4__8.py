@@ -66,12 +66,15 @@ def get_polynomial_interpolation_df(x_arr, y_arr, x_vals):
     return df
     
 
+fig, axes = plt.subplots(nrows=1, ncols=2, figsize=(10, 5))
 # Section 6.4 Question 8a
 x_arr = np.linspace(-1, 1, 21)
 y_arr = get_f_arr(x_arr)
 
 df = get_polynomial_interpolation_df(x_arr, y_arr, np.linspace(-1, 1, 41))
-df.to_csv("/csv/Qn6.4_8a.csv")
+df.to_csv("/content/csv/Qn6.4_8a.csv")
+axes[0].plot(np.linspace(-1, 1, 41), df["f(x)-p(x)"], label="Polynomial Interpolation with equally spaced nodes")
+axes[1].plot(np.linspace(-1, 1, 41), df["f(x)-p(x)"], label="Polynomial Interpolation with equally spaced nodes")
 
 # Section 6.4 Question 8b
 x_arr = np.linspace(1, 21, 21)
@@ -79,8 +82,9 @@ x_arr = np.cos((x_arr - 1.0)*np.pi/20.0)
 y_arr = get_f_arr(x_arr)
 
 df = get_polynomial_interpolation_df(x_arr, y_arr, np.linspace(-1, 1, 41))
-df.to_csv("/csv/Qn6.4_8b.csv")
-
+df.to_csv("/content/csv/Qn6.4_8b.csv")
+axes[0].plot(np.linspace(-1, 1, 41), df["f(x)-p(x)"], label="Polynomial Interpolation with Chebyshev nodes")
+axes[1].plot(np.linspace(-1, 1, 41), df["f(x)-p(x)"], label="Polynomial Interpolation with Chebyshev nodes")
 
 # Section 6.4 Question 8c : With 21 equally spaced knots, repeat the experiment using a cubic interpolating spline. 
 t = np.linspace(-1, 1, 21)
@@ -95,4 +99,16 @@ df = pd.DataFrame()
 df["f(x)"] = get_f_arr(x_vals)
 df["Sy(x)"] = S_y
 df["f(x)-Sy(x)"] = get_f_arr(x_vals) - S_y
-df.to_csv("/csv/Qn6.4_8c.csv")
+df.to_csv("/content/csv/Qn6.4_8c.csv")
+axes[0].plot(np.linspace(-1, 1, 41), df["f(x)-Sy(x)"], label="Cubic spline Interpolation with equally spaced nodes")
+axes[1].plot(np.linspace(-1, 1, 41), df["f(x)-Sy(x)"], label="Cubic spline Interpolation with equally spaced nodes")
+
+axes[1].set_ylim([-1e-3, 1e-3])
+axes[0].legend(loc = 'upper center')
+axes[0].set_xlabel("x")
+axes[0].set_ylabel("f(x)-p(x)")
+axes[1].set_xlabel("x")
+axes[1].set_ylabel("f(x)-p(x)")
+fig.tight_layout()
+fig.suptitle("Comparison of errors in interpolation", y=1.08)
+plt.savefig("images/output_Qn6.4_8.png")
