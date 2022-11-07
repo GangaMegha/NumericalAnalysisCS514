@@ -14,7 +14,7 @@ Inorder to run the code for the following questions taken from *"David, K., & Wa
     e.g. output <img src="./images/output_Qn6.4_7.png" alt="drawing" width="500"/>
 
     Samples coordinates obtained using : [geogebra](https://www.geogebra.org/m/HmnV33gj)
-    <img src="./images/SamplesQn6.4_7.png" alt="drawing" width="500"/>
+    <img src="./images/SamplesQn6.4_7.png" alt="drawing" width="300"/>
 
 2. Section 6.4 Qn.8 : Interpret the results of the following numerical experiment and draw some conclusions.
 
@@ -26,8 +26,8 @@ Inorder to run the code for the following questions taken from *"David, K., & Wa
            
            python Spline_Interpolation/Qn6_4__8.py
            
-
-
+    Output : <img src="./images/output_Qn6.4_8.png" alt="drawing" width="600"/>
+           
 
 ## References
 *David, K., & Ward, C.(2009). Numerical Analysis : Mathematics of scientific computing, third edition. American Mathematical Society*
