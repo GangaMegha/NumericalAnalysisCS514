@@ -52,6 +52,15 @@ Inorder to run the code for the following questions taken from *"David, K., & Wa
            python Spline_Interpolation/Qn6_4__8.py
            
     Output : <img src="./images/output_Qn6.4_8.png" alt="drawing" width="600"/>
+    
+ Error stats :
+    
+|         | Polynomial Interpolation with equally spaced nodes | Polynomial Interpolation with Chebyshev nodes | Cubic spline Interpolation with equally spaced nodes |
+|---------|----------------------------------------------------|-----------------------------------------------|------------------------------------------------------|
+| Max     | 0.3342047779189009                                 | 0.00026438597925459995                        | 0.0002538117963474251                                |
+| Min     | -0.027658387666702366                              | -0.0002772268698846281                        | -0.00026786718837179535                              |
+| Mean    | 0.015116611260860295                               | -1.573236101873795e-07                        | -1.0598282896892778e-05                              |
+| Std_dev | 0.07251251050940774                                | 0.00015180945290261418                        | 8.986271219774465e-05                                |
            
 
 ## References
