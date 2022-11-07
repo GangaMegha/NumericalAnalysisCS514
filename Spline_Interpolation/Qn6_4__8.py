@@ -1,5 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt 
+import pandas as pd
 
 def get_z_h(n, t, y):
     h, b = np.zeros(n), np.zeros(n)
@@ -23,9 +24,8 @@ def get_z_h(n, t, y):
 
     return z, h
 
-def get_S_points(t, y, z, h, num_points):
-    S = np.zeros(num_points)
-    x_arr = np.linspace(min(t), max(t), num_points)
+def get_S_points(t, y, z, h, x_arr):
+    S = np.zeros(len(x_arr))
     
     for idx, x in enumerate(x_arr):
         for j in range(len(t)-1):
@@ -38,45 +38,61 @@ def get_S_points(t, y, z, h, num_points):
         S[idx] = y[i] + (x - t[i]) * (C + (x-t[i]) * (B + (x-t[i])*A) )
 
     return S
-        
 
-#Capital A : https://www.geogebra.org/m/HmnV33gj
-coordinates = [(4.2,4.83), 
-                (4.78,4.83), 
-                (5.68,4.87), 
-                (5.66,5.57), 
-                (5,6), 
-                (4,6), 
-                (3.64,5.51), 
-                (3.56,4.73),
-                (3.84,3.73),
-                (4.66,3.41),
-                (5.5,3.51)
-              ]
+def get_langrange(x, x_i, x_list):
+    return np.prod((x-x_list)/(x_i - x_list + 1e-15))
 
-t = []
-x = []
-y = []
-for i, elem in enumerate(coordinates):
-    t.append(i)
-    x.append(elem[0])
-    y.append(elem[1])
+def get_polynomial_interpolation_val(x_arr, y_arr, x):
+    p = 0
+    for i in range(len(x_arr)):
+      x_list = list(x_arr)
+      x_list.remove(x_arr[i])
+      p += y_arr[i]*get_langrange(x, x_arr[i], np.array(x_list))
+    return p
 
+def get_f_arr(x_arr):
+    return 1.0/(1 + 6.0 * x_arr**2)
+
+def get_polynomial_interpolation_df(x_arr, y_arr, x_vals):
+    p = []
+    for i, x in enumerate(x_vals):
+        p.append(get_polynomial_interpolation_val(x_arr, y_arr, x))
+
+    df = pd.DataFrame()
+    f = get_f_arr(x_vals)
+    df["f(x)"] = f
+    df["p(x)"] = p
+    df["f(x)-p(x)"] = f - np.array(p)
+    return df
+    
+
+# Section 6.4 Question 8a
+x_arr = np.linspace(-1, 1, 21)
+y_arr = get_f_arr(x_arr)
+
+df = get_polynomial_interpolation_df(x_arr, y_arr, np.linspace(-1, 1, 41))
+df.to_csv("/csv/Qn6.4_8a.csv")
+
+# Section 6.4 Question 8b
+x_arr = np.linspace(1, 21, 21)
+x_arr = np.cos((x_arr - 1.0)*np.pi/20.0)
+y_arr = get_f_arr(x_arr)
+
+df = get_polynomial_interpolation_df(x_arr, y_arr, np.linspace(-1, 1, 41))
+df.to_csv("/csv/Qn6.4_8b.csv")
+
+
+# Section 6.4 Question 8c : With 21 equally spaced knots, repeat the experiment using a cubic interpolating spline. 
+t = np.linspace(-1, 1, 21)
 n = len(t)
-z_x, h_x = get_z_h(n, t, x)
-z_y, h_y = get_z_h(n, t, x)
+y_arr = get_f_arr(t)
 
-S_x = get_S_points(t, x, z_x, h_x, num_points=50)
-S_y = get_S_points(t, y, z_y, h_y, num_points=50)
+z_y, h_y = get_z_h(n, t, y_arr)
 
-fig, axes = plt.subplots(nrows=1, ncols=2, figsize=(8, 4))
-axes[0].scatter(x, y)
-axes[0].set_title("Original samples")
-axes[0].set_xlabel("Sampled x")
-axes[0].set_ylabel("Sampled y")
-axes[1].scatter(S_x, S_y)
-axes[1].set_title("Cubic spline interpolation")
-axes[1].set_xlabel(r"x from $S_x$")
-axes[1].set_ylabel(r"y from $S_y$")
-fig.tight_layout()
-plt.show()
+x_vals = np.linspace(-1, 1, 41)
+S_y = get_S_points(t, y_arr, z_y, h_y, x_vals)
+df = pd.DataFrame()
+df["f(x)"] = get_f_arr(x_vals)
+df["Sy(x)"] = S_y
+df["f(x)-Sy(x)"] = get_f_arr(x_vals) - S_y
+df.to_csv("/csv/Qn6.4_8c.csv")

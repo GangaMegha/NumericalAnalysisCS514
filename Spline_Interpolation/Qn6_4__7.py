@@ -64,7 +64,7 @@ for i, elem in enumerate(coordinates):
 
 n = len(t)
 z_x, h_x = get_z_h(n, t, x)
-z_y, h_y = get_z_h(n, t, x)
+z_y, h_y = get_z_h(n, t, y)
 
 S_x = get_S_points(t, x, z_x, h_x, num_points=50)
 S_y = get_S_points(t, y, z_y, h_y, num_points=50)
@@ -79,4 +79,4 @@ axes[1].set_title("Cubic spline interpolation")
 axes[1].set_xlabel(r"x from $S_x$")
 axes[1].set_ylabel(r"y from $S_y$")
 fig.tight_layout()
-plt.show()
+plt.savefig("images/output_Qn6.4_7.png")
