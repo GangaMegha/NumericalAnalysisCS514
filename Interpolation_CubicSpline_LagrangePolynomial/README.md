@@ -11,7 +11,7 @@ In a cubic spline function S, each polynomial will of degree $\leq 3$. Given dat
 
 <img src="./images/SplineFunction.png" alt="drawing" width="230"/>
 
-by solvig the system,
+by solving the system,
 
 <img src="./images/CubicSplineMatrix.png" alt="drawing" width="500"/>
 
