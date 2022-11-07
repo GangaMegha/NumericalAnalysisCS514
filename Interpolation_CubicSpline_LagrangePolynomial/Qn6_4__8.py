@@ -66,6 +66,13 @@ def get_polynomial_interpolation_df(x_arr, y_arr, x_vals):
     return df
     
 
+def stats(data, title):
+    print("\n\nStats of ", title)
+    print("Max : ", np.max(data))
+    print("Min : ", np.min(data))
+    print("Mean : ", np.mean(data))
+    print("Std_dev : ", np.std(data))
+
 fig, axes = plt.subplots(nrows=1, ncols=2, figsize=(10, 5))
 # Section 6.4 Question 8a
 x_arr = np.linspace(-1, 1, 21)
@@ -75,6 +82,7 @@ df = get_polynomial_interpolation_df(x_arr, y_arr, np.linspace(-1, 1, 41))
 df.to_csv("/content/csv/Qn6.4_8a.csv")
 axes[0].plot(np.linspace(-1, 1, 41), df["f(x)-p(x)"], label="Polynomial Interpolation with equally spaced nodes")
 axes[1].plot(np.linspace(-1, 1, 41), df["f(x)-p(x)"], label="Polynomial Interpolation with equally spaced nodes")
+stats(df["f(x)-p(x)"], "Polynomial Interpolation with equally spaced nodes")
 
 # Section 6.4 Question 8b
 x_arr = np.linspace(1, 21, 21)
@@ -85,6 +93,7 @@ df = get_polynomial_interpolation_df(x_arr, y_arr, np.linspace(-1, 1, 41))
 df.to_csv("/content/csv/Qn6.4_8b.csv")
 axes[0].plot(np.linspace(-1, 1, 41), df["f(x)-p(x)"], label="Polynomial Interpolation with Chebyshev nodes")
 axes[1].plot(np.linspace(-1, 1, 41), df["f(x)-p(x)"], label="Polynomial Interpolation with Chebyshev nodes")
+stats(df["f(x)-p(x)"], "Polynomial Interpolation with Chebyshev nodes")
 
 # Section 6.4 Question 8c : With 21 equally spaced knots, repeat the experiment using a cubic interpolating spline. 
 t = np.linspace(-1, 1, 21)
@@ -102,6 +111,7 @@ df["f(x)-Sy(x)"] = get_f_arr(x_vals) - S_y
 df.to_csv("/content/csv/Qn6.4_8c.csv")
 axes[0].plot(np.linspace(-1, 1, 41), df["f(x)-Sy(x)"], label="Cubic spline Interpolation with equally spaced nodes")
 axes[1].plot(np.linspace(-1, 1, 41), df["f(x)-Sy(x)"], label="Cubic spline Interpolation with equally spaced nodes")
+stats(df["f(x)-Sy(x)"], "Cubic spline Interpolation with equally spaced nodes")
 
 axes[1].set_ylim([-1e-3, 1e-3])
 axes[0].legend(loc = 'upper center')
