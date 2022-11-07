@@ -7,7 +7,21 @@ Spline function consists of polynomial pieces on subintervals joined together wi
 1. On each interval $[t_{i-1}, t_i$, S is a polynomial of degree $\leq k$.
 2. S has a continuous $(k-1)^{st}$ derivative on $[t_0, t_n]$.
 
-In a cubic spline function S, each polynomial will of degree $\leq 3$. We can compute the cubic polynomial interpolation given by,
+In a cubic spline function S, each polynomial will of degree $\leq 3$. Given data $(t_i, y_i)$ for $0 \leq i \leq n$, we can compute the cubic spline interpolation given by,
+
+<img src="./images/SplineFunction.png" alt="drawing" width="230"/>
+
+by solvig the system,
+
+<img src="./images/CubicSplineMatrix.png" alt="drawing" width="500"/>
+
+This can be solved using the algorithm,
+
+<img src="./images/CubicSplineAlgo.png" alt="drawing" width="250"/>
+
+after which we can compute $S_i(x)$ using,
+
+<img src="./images/CubicSplineSi.png" alt="drawing" width="450"/>
 
 ### Polynomial Interpolation : Using Lagrange Polynomials
 Given data $(x_i, y_i)$ for $0 \leq i \leq n$, there is one and only one interpolation polynomial of degree $\leq n$ associated with the data if $x_i$ are unique. There are different ways of expressing the interpolation polynomial. The Lagrange form of the interpolation polynomial is given by,
