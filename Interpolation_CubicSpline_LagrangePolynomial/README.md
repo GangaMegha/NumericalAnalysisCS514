@@ -1,7 +1,16 @@
-# Spline Interpolation
+# Interpolation
 
 ## Overview
 
+### Cubic Spline Interpolation 
+Spline function consists of polynomial pieces on subintervals joined together with certain continuity conditions. $n+1$ points $t_0, t_1, ..., t_n$ are called knots. A spline function of degree $k$ having knots $t_0, t_1, ..., t_n$ is a function S such that :
+1. On each interval $[t_{i-1}, t_i$, S is a polynomial of degree $\leq k$.
+2. S has a continuous $(k-1)^{st}$ derivative on $[t_0, t_n]$.
+
+### Polynomial Interpolation : Using Lagrange Polynomials
+Given data $(x_i, y_i)$ for $0 \leq i \leq n$, there is one and only one interpolation polynomial of degree $\leq n$ associated with the data if $x_i$ are unique. There are different ways of expressing the interpolation polynomial. The Lagrange form of the interpolation polynomial is given by,
+$$p(x) = \sum_{k=0}^n y_k \cdot l_k(x)$$
+where $$l_k(x) = \prod\limits_{\substack{j=0 \\ j\neq i}}^n \frac{x-x_j}{x_i-x_j} \quad \quad 0 \leq i \leq n$$
 
 ## Getting started
 Inorder to run the code for the following questions taken from *"David, K., & Ward, C.(2009). Numerical Analysis : Mathematics of scientific computing, third edition. American Mathematical Society"*, navigate to this directory (**/Newtons_Secant_Horners/**) and use the instructions that follow:
