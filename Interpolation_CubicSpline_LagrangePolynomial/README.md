@@ -45,11 +45,11 @@ Inorder to run the code for the following questions taken from *"David, K., & Wa
 
 2. Section 6.4 Qn.8 : Interpret the results of the following numerical experiment and draw some conclusions.
 
-    a. Define p to be the polynomial of degree 20 that interpolates the function $f(x) =(1 + 6x^2)^{-1} at 21 equally spaced nodes in the interval [—1, 1]. Include the endpoints as nodes. Print a table of f(x), p(x), and f(x) — p(x) at 41 equally spaced points on the interval.
+    a. Define p to be the polynomial of degree $20$ that interpolates the function $f(x) =(1 + 6x^2)^{-1}$ at $21$ equally spaced nodes in the interval $[—1, 1]$. Include the endpoints as nodes. Print a table of $f(x), p(x)$ and $f(x) — p(x)$ at $41$ equally spaced points on the interval.
 
     b. Repeat the experiment using the Chebyshev nodes given by $$x_i = cos[(i - 1)\pi/20] \quad \quad (1 < i < 21) $$
 
-    c. With 21 equally spaced knots, repeat the experiment using a cubic interpolating spline
+    c. With $21$ equally spaced knots, repeat the experiment using a cubic interpolating spline
            
            python Spline_Interpolation/Qn6_4__8.py
            
