@@ -36,7 +36,8 @@ Inorder to run the code for the following questions taken from *"David, K., & Wa
            
            python Spline_Interpolation/Qn6_4__7.py
            
-    e.g. output <img src="./images/output_Qn6.4_7.png" alt="drawing" width="500"/>
+    e.g. output plot using 25 points <img src="./images/output_Qn6.4_7_25.png" alt="drawing" width="500"/>
+    e.g. output plot using 100 points <img src="./images/output_Qn6.4_7_100.png" alt="drawing" width="500"/>
 
     Samples coordinates obtained using : [geogebra](https://www.geogebra.org/m/HmnV33gj)
     <img src="./images/SamplesQn6.4_7.png" alt="drawing" width="300"/>

@@ -53,6 +53,7 @@ coordinates = [(4.2,4.83),
                 (4.66,3.41),
                 (5.5,3.51)
               ]
+num_points = 50
 
 t = []
 x = []
@@ -66,8 +67,8 @@ n = len(t)
 z_x, h_x = get_z_h(n, t, x)
 z_y, h_y = get_z_h(n, t, y)
 
-S_x = get_S_points(t, x, z_x, h_x, num_points=50)
-S_y = get_S_points(t, y, z_y, h_y, num_points=50)
+S_x = get_S_points(t, x, z_x, h_x, num_points)
+S_y = get_S_points(t, y, z_y, h_y, num_points)
 
 fig, axes = plt.subplots(nrows=1, ncols=2, figsize=(8, 4))
 axes[0].scatter(x, y)
@@ -79,4 +80,4 @@ axes[1].set_title("Cubic spline interpolation")
 axes[1].set_xlabel(r"x from $S_x$")
 axes[1].set_ylabel(r"y from $S_y$")
 fig.tight_layout()
-plt.savefig("images/output_Qn6.4_7.png")
+plt.savefig(f"images/output_Qn6.4_7_{num_points}.png")
