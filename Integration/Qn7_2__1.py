@@ -4,6 +4,7 @@ until individual terms fall below 10^{-8} in magnitude. Test your program by cal
 values of this integral for x = 0.0, 0.1, 0.2, ..., 1.0.
 '''
 import numpy as np
+import math
 
 fact_dict = {}
 def fact(k):
@@ -34,4 +35,5 @@ def Taylor_exp(x, eps = 1e-8):
     return result
 
 for x in np.arange(0, 1.1, 0.1):
-    print(round(x, 1), "\t", Taylor_exp(x))
+    val = Taylor_exp(x)
+    print(round(x, 1), "\t", val, "\t", abs(0.5 * np.sqrt(np.pi) * math.erf(x)-val))
