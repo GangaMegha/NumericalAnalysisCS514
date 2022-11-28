@@ -1,87 +1,45 @@
-# Newton-Raphson, Secant Method and Horner's Algorithm
+# Numerical Integration
 
 ## Overview
-### 1. Newton's method
-Newton-Raphson iteration can be used to find the zero of a real valued function of a real variable.
+### 1. Integral using Taylor Series Expansion
 
-For funtion $f(x)$, we can find its zero using the following iteration :
-
-$$x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)} \quad  ; n>=0$$
-      
-where $f(x_n)$ is the value of the function at $x_n$ and $f'(x_n)$ is the value of the derivative of $f(x)$ at $x_n$.
-      
-We can also use it for solving a system of non-linear equations by linearizing it and using matrices.
-
-For example, 
-
-$$f_1(x_1, x_2) = 0$$
-
-$$f_2(x_1, x_2) = 0$$
-
-$$X = \begin{bmatrix}
-x_1\\
-x_2
-\end{bmatrix}$$
-
-$$F(X) = \begin{bmatrix} 
-f_1(x_1, x_2) \\ 
-f_2(x_1, x_2) \end{bmatrix}$$
-
-$$F'(X) = \begin{bmatrix}
-\frac{df_1}{dx_1} & \frac{df_1}{dx_2} \\
-\frac{df_2}{dx_1} & \frac{df_2}{dx_2} 
-\end{bmatrix}$$
-
-        
-We use the iteration :
-      
-$$X_{n+1} = X_n - F'(X_n)^{-1} \cdot F(X_n)$$
+Taylor expansion of $$e^{-x^2} = \sum_{k=0}^{\infty} (-1)^k \frac{x^{2k}}{k!}$$
+Integrating this gives us, $$\int_0^x e^{-t^2} dt = \sum_{k=0}^{\infty} (-1)^k \frac{x^{2k+1}}{(2k+1) \cdot k!}$$
       
       
-### 2. Secant Method
-Secant method is also used to find the zero of a real valued function of a real variable.
+### 2. Integral using Cubic splines
+Suppose $$\int_a^b f(x) dx \sim \int_a^b S(x) dx$$
 
-One of the drawbacks of Newton's method is that it involves derivative of the function whose zero is sought. 
-To overcome this disadvantage, one of the ways is to use secant method.
+We know,
+$$S_i(x) = \frac{z_i}{6h_i} (t_{i+1} - x)^3 + \frac{z_{i+1}}{6h_i} (x - t_i)^3  + ( \frac{y_{i+1}}{h_i} - \frac{z_{i+1} h_i}{6} ) (x - t_i) + ( \frac{y_i}{h_i} - \frac{z_i h_i}{6} ) (t_{i+1} - x)$$
 
-For funtion f(x), we can find its zero using the following iteration :
+Integrating $S_i(x)$,
+
+$$ IS_i(x) = \int S_i(x) dx = - \frac{z_i}{6h_i} \frac{1}{4} (t_{i+1} - x)^4 + \frac{z_{i+1}}{6h_i} \frac{1}{4} (x - t_i)^4 + ( \frac{y_{i+1}}{h_i} - \frac{z_{i+1} h_i}{6} ) \frac{1}{2} (x - t_i)^2 - ( \frac{y_i}{h_i} - \frac{z_i h_i}{6} ) \frac{1}{2} (t_{i+1} - x)^2 $$
+
+Therefore, 
+
+$$\int_{t_0}^{t_n} S(x) dx = \sum_{i=0}^{n-1} \int_{t_i}^{t_{i+1}} S_i(x) dx $$
+
+$$\int_{t_0}^{t_n} S(x) dx = \sum_{i=0}^{n-1} IS_i(t_{i+1}) - IS_i(t_{i}) $$
       
-$$x_{n+1} = x_n - f(x_n) * \bigg(\frac{x_n - x_{n-1}}{f(x_n) - f(x_{n-1})}\bigg) \quad ; n>=1$$
-      
-      
-### 3. Horner's Algorithm
-
-Horner's algorithm is to used to efficiently compute values of a polynomial. 
-The method is also known as 'nested multiplcation' or 'synthetic division'.
-
-The algorithm has several usecases. For example : 
-1. Given a complex number $z_0$ and polynomial $p$ find the values of $p(z_0)$ and it's derivatives.
-2. Find the deflation factors, ie., removing linear factor from polynomial like $p(z) = (z-z_0) \cdot q(z) + r$ by computing $r$
-3. Find coefficients of Taylor series expansion of the polynomial $p$ around $z_0$ (complete Horner's algorithm)
-
-
-Here, given $x_0$ and coefficients of polynomial $p(x) = a_n x^n + a_{n-1} x^{n-1} + ... a_1 x + a_0$ we use Horner's algorithm to compute :
-1. $\alpha = p(x_0)$ 
-2. $\beta  = p'(x_0)$
-
-by starting with $\alpha = a_n$ and $\beta=0$ and using the following iteration from $k=n-1$ to $0$:
-      
-$$\beta = \alpha + x_0 \times \beta$$  
-
-$$\alpha = a_k + x_0 \times \alpha$$
-
+     
 
 ## Getting started
 Inorder to run the code for the following questions taken from *"David, K., & Ward, C.(2009). Numerical Analysis : Mathematics of scientific computing, third edition. American Mathematical Society"*, navigate to this directory (**/Integration/**) and use the instructions that follow:
 
-1. Section 7.2 Qn.1 : Write a program for computing \int_0^x e^{-t^2} dt by summing an appropriate Taylor Series until individual terms fall below 10^{-8} in magnitude. Test your program by calculating the values of this integral for x = 0.0, 0.1, 0.2, ..., 1.0.
+1. Section 7.2 Qn.1 : Write a program for computing $\int_0^x e^{-t^2} dt$ by summing an appropriate Taylor Series until individual terms fall below $10^{-8}$ in magnitude. Test your program by calculating the values of this integral for $x = 0.0, 0.1, 0.2, ..., 1.0$.
            
            make Qn7_2__1
            
            
-2. Section 7.2 Qn.2 : Write a computer program that estimates
+2. Section 7.2 Qn.2 : Write a computer program that estimates $\int_a^b f(x) dx$ by $\int_a^b S(x) dx$ where $S$ is the natural cubic spline having knots $a+ih$ and interpolating $f$ at these knots. Here $0 \leq i \leq n$ and $h = (b-a)/n$. First obtain a formula for $$\int_{t_0}^{t_n} S(x) dx$$ starting with Equation (7) in section 6.4 (p.351). Then write the subprogram to compute this. Test your code on these well known integrals: $$\boldsymbol{a.} \frac{4}{\pi} \int_0^1 (1 + x^2)^{-1} dx$$ $$\boldsymbol{b.} \frac{1}{\log{3}} \int_1^3 x^{-1} dx$$
            
-           make Qn7_2__2   
+           make Qn7_2__2_a 
+           
+           make Qn7_2__2_b
+           
+           make Qn7_2__2
            
 ## References
 *David, K., & Ward, C.(2009). Numerical Analysis : Mathematics of scientific computing, third edition. American Mathematical Society*
